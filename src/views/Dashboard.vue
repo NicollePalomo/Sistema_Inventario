@@ -1,7 +1,11 @@
 <template>
   <div>
     <Header />
-    <div class="container">
+    <div class="container ">
+      <div class="aligne">
+        <button class="btn btn-info " v-on:click="nuevo()">Agregar </button>
+        <br /><br />
+      </div>
       <table class="table">
         <thead>
           <tr>
@@ -27,7 +31,7 @@
             >
               Editar
             </button>
-            <button type="button" class="btn btn-outline-danger btn-sm mt-1">Borrar</button>
+            <!-- <button type="button" class="btn btn-outline-danger btn-sm mt-1">Borrar</button> -->
           </tr>
         </tbody>
       </table>
@@ -53,6 +57,9 @@
       editar(id) {
         this.$router.push("/editar/" + id);
       },
+      nuevo() {
+        this.$router.push("/crear");
+      },
     },
     mounted: function() {
       let direct = "https://api.solodata.es/pacientes?page=" + this.pagina;
@@ -64,4 +71,8 @@
   };
 </script>
 
-<style   scoped></style>
+<style scoped>
+  .aligne {
+    text-align: left;
+  }
+</style>
