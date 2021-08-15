@@ -1,5 +1,5 @@
 <template>
-  <div class=" container">
+  <div class=" container-fluid">
     <router-link to="/crear" class=" btn btn-success">Crear nuevo equipo</router-link>
     <div class="card mt-3 ">
       <div class="card-header text-center">
@@ -29,12 +29,12 @@
               <td>{{ equipo.nombre }}</td>
               <td>{{ equipo.periferico }}</td>
               <td>{{ equipo.fabricante }}</td>
-              <td>{{ equipo.num_serial }}</td>
+              <td>{{ equipo.seriall }}</td>
               <td>{{ equipo.modelo }}</td>
               <td>{{ equipo.procesador }}</td>
               <td>{{ equipo.ram }}</td>
               <td>{{ equipo.so }}</td>
-              <td>{{ equipo.tipo_area }}</td>
+              <td>{{ equipo.area }}</td>
               <td>{{ equipo.servicio }}</td>
               <td>
                 <div class="btn-groupe" role="group" aria-label="">
