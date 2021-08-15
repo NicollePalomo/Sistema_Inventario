@@ -1,6 +1,7 @@
 <template>
   <div class=" container">
-    <div class="card mt-5 ">
+    <router-link to="/crear" class=" btn btn-success">Crear nuevo empleado</router-link> 
+    <div class="card mt-3 ">
       <div class="card-header text-center">
         Empleados
       </div>
