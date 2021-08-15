@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header />
+    
     <div class="container ">
       <div class="aligne">
         <button class="btn btn-info " v-on:click="nuevo()">Agregar </button>
@@ -36,13 +36,12 @@
         </tbody>
       </table>
     </div>
-    <Footer />
+     
   </div>
 </template>
 
 <script>
-  import Header from "@/components/Header.vue";
-  import Footer from "@/components/Footer.vue";
+  
   import axios from "axios";
   export default {
     name: "Dashboard",
@@ -52,7 +51,7 @@
         pagina: 1,
       };
     },
-    components: { Header, Footer },
+     
     methods: {
       editar(id) {
         this.$router.push("/editar/" + id);

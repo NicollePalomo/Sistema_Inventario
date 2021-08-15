@@ -1,25 +1,26 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
-import Dashboard from "../views/Dashboard.vue";
-import Editar from "../views/Editar.vue";
-import Crear from "../views/Crear.vue";
+//import Home from "../views/Home.vue";
+//import Dashboard from "../views/Dashboard.vue";
+import Editar from "../components/Editar.vue";
+import Crear from "../components/Crear.vue";
+import Listar from "../components/Listar.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
+  // {
+  //   path: "/",
+  //   name: "Home",
+  //   component: Home,
+  // },
+  // {
+  //   path: "/dashboard",
+  //   name: "Dashboard",
+  //   component: Dashboard,
+  // },
   {
-    path: "/",
-    name: "Home",
-    component: Home,
-  },
-  {
-    path: "/dashboard",
-    name: "Dashboard",
-    component: Dashboard,
-  },
-  {
-    path: "/editar/:id",
+    path: "/editar",
     name: "Editar",
     component: Editar,
   },
@@ -27,6 +28,11 @@ const routes = [
     path: "/crear",
     name: "Crear",
     component: Crear,
+  },
+  {
+    path: "/listar",
+    name: "Listar",
+    component: Listar,
   },
 ];
 
