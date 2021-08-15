@@ -8,9 +8,10 @@
       <!-- Contenido -->
       <div class="card-body">
         <form v-on:submit.prevent="agregarRegistro">
+          
           <div class="row g-3 justify-content-center">
             <!-- nombre -->
-            <div class="col-md-6  ">
+            <div class="col-md-6">
               <label for="nombre" class="form-label">Nombre del equipo</label>
               <input
                 type="text"

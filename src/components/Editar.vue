@@ -3,39 +3,152 @@
     <div class="card  mt-5">
       <!-- Titulo -->
       <div class="card-header">
-        Editar Nuevo Empleado
+        Editar equipo
       </div>
       <!-- Contenido -->
       <div class="card-body">
         <form v-on:submit.prevent="actualizarRegistro">
-          <div class="row justify-content-center">
+          <div class="row g-3 justify-content-center">
             <!-- nombre -->
-            <div class="col-md-5 form-group">
-              <label for="nombre">Nombre:</label>
+            <div class="col-md-6">
+              <label for="nombre" class="form-label">Nombre del equipo</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="empleado.nombre"
+                v-model="equipo.nombre"
                 id="nombre"
                 aria-describedby="helpId"
                 required
               />
             </div>
             <!-- email -->
-            <div class="col-md-5 form-group">
-              <label for="email">Email:</label>
+            <div class="col-md-6">
+              <label for="periferico" class="form-label">Nombre del Periférico</label>
               <input
                 type="text"
                 class="form-control"
                 name="email"
-                v-model="empleado.tipo_periferico"
+                v-model="equipo.periferico"
                 id="email"
                 aria-describedby="helpId"
                 required
               />
             </div>
+            <!-- fabricante -->
+            <div class="col-md-5">
+              <label for="fabricante" class="form-label">Nombre del Fabricante</label>
+              <input
+                type="text"
+                class="form-control"
+                name="fabricante"
+                v-model="equipo.fabricante"
+                id="fabricante"
+                aria-describedby="helpId"
+                required
+              />
+            </div>
+            <!-- serial -->
+            <div class="col-md-4">
+              <label for="serial" class="form-label">Numero Serial</label>
+              <input
+                type="text"
+                class="form-control"
+                name="serial"
+                v-model="equipo.seriall"
+                id="serial"
+                aria-describedby="helpId"
+                placeholder="serial"
+                required
+              />
+            </div>
+
+            <!-- modelo -->
+            <div class="col-md-3">
+              <label for="modelo" class="form-label">Nombre del Modelo</label>
+              <input
+                type="text"
+                class="form-control"
+                name="modelo"
+                v-model="equipo.modelo"
+                id="modelo"
+                aria-describedby="helpId"
+                placeholder="modelo"
+                required
+              />
+            </div>
+            <!-- Procesador -->
+            <div class="col-md-5">
+              <label for="procesador" class="form-label">Nombre del Procesador</label>
+              <input
+                type="text"
+                class="form-control"
+                name="procesador"
+                v-model="equipo.procesador"
+                id="procesador"
+                aria-describedby="helpId"
+                placeholder="procesador"
+                required
+              />
+            </div>
+            <!-- SO -->
+            <div class="col-md-4">
+              <label for="so" class="form-label">Sistema Operativo</label>
+              <input
+                type="text"
+                class="form-control"
+                name="so"
+                v-model="equipo.so"
+                id="so"
+                aria-describedby="helpId"
+                placeholder="so"
+                required
+              />
+            </div>
+            <!-- ram -->
+            <div class="col-md-3">
+              <label for="ram" class="form-label">RAM</label>
+              <input
+                type="text"
+                class="form-control"
+                name="ram"
+                v-model="equipo.ram"
+                id="ram"
+                aria-describedby="helpId"
+                placeholder="ram"
+                required
+              />
+            </div>
+            <!-- Area -->
+            <div class="col-md-6  ">
+              <label for="area" class="form-label">Area</label>
+              <input
+                type="text"
+                class="form-control"
+                name="area"
+                v-model="equipo.area"
+                id="area"
+                aria-describedby="helpId"
+                placeholder="Ingrese el area"
+                required
+              />
+            </div>
+            <!-- Servicio -->
+            <div class="col-md-6">
+              <label for="servicio" class="form-label">Servicio</label>
+              <input
+                type="text"
+                class="form-control"
+                name="servicio"
+                v-model="equipo.servicio"
+                id="servicio"
+                aria-describedby="helpId"
+                placeholder="servicio que presta"
+                required
+              />
+            </div>
           </div>
+
           <!-- Botones -->
           <div class="btn-group mt-3 " role="group" aria-label="">
             <button type="submit" class="btn btn-info mx-2">Modificar</button>
@@ -53,7 +166,7 @@
   export default {
     data() {
       return {
-        empleado: {},
+        equipo: {},
       };
     },
     created: function() {
@@ -65,15 +178,23 @@
           .then((respuesta) => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
-            this.empleado = datosRespuesta[0];
+            this.equipo = datosRespuesta[0];
           })
           .catch(console.log);
       },
       actualizarRegistro() {
         let datosEnviar = {
           id: this.$route.params.id,
-          nombre: this.empleado.nombre,
-          correo: this.empleado.correo,
+          nombre: this.equipo.nombre,
+          periferico: this.equipo.periferico,
+          fabricante: this.equipo.fabricante,
+          seriall: this.equipo.seriall,
+          modelo: this.equipo.modelo,
+          procesador: this.equipo.procesador,
+          ram: this.equipo.ram,
+          so: this.equipo.so,
+          area: this.equipo.area,
+          servicio: this.equipo.servicio,
         };
         fetch("http://localhost/equipos/?actualizar=" + this.$route.params.id, {
           method: "POST",
