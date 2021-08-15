@@ -3,37 +3,51 @@
     <div class="card  mt-5">
       <!-- Titulo -->
       <div class="card-header">
-        Agregar NuevoEmpleados
+        Agregar nuevo equipo
       </div>
       <!-- Contenido -->
       <div class="card-body">
         <form v-on:submit.prevent="agregarRegistro">
-          <div class="row justify-content-center">
+          <div class="row g-3 justify-content-center">
             <!-- nombre -->
-            <div class="col-md-5 form-group">
-              <label for="nombre">Nombre:</label>
+            <div class="col-md-6  ">
+              <label for="nombre" class="form-label">Nombre del equipo</label>
               <input
                 type="text"
                 class="form-control"
                 name="nombre"
-                v-model="empleado.nombre"
+                v-model="equipo.nombre"
                 id="nombre"
                 aria-describedby="helpId"
-                placeholder="Ingrese el Nombre"
+                placeholder="Ingrese el nombre"
                 required
               />
             </div>
-            <!-- email -->
-            <div class="col-md-5 form-group">
-              <label for="email">Email:</label>
+            <!-- periferico -->
+            <div class="col-md-6">
+              <label for="periferico" class="form-label">Nombre del Periférico</label>
               <input
                 type="text"
                 class="form-control"
-                name="email"
-                v-model="empleado.correo"
-                id="email"
+                name="periferico"
+                v-model="equipo.periferico"
+                id="periferico"
                 aria-describedby="helpId"
-                placeholder="Ingrese el Correo"
+                placeholder="periferico"
+                required
+              />
+            </div>
+            <!-- fabricante -->
+            <div class="col-md-5">
+              <label for="fabricante" class="form-label">Nombre del Fabricante</label>
+              <input
+                type="text"
+                class="form-control"
+                name="fabricante"
+                v-model="equipo.fabricante"
+                id="fabricante"
+                aria-describedby="helpId"
+                placeholder="fabricante"
                 required
               />
             </div>
@@ -55,16 +69,27 @@
   export default {
     data() {
       return {
-        empleado: {},
+        equipo: {},
       };
     },
     methods: {
       agregarRegistro() {
-        console.log(this.empleado);
+        console.log(this.equipo);
 
-        let datosEnviar = { nombre: this.empleado.nombre, correo: this.empleado.correo };
+        let datosEnviar = {
+          nombre: this.equipo.nombre,
+          periferico: this.equipo.periferico,
+          fabricante: this.equipo.fabricante,
+          //   // num_serial: this.equipo.num_serial,
+          //   // modelo: this.equipo.modelo,
+          //   // procesador: this.equipo.procesador,
+          //   // ram: this.equipo.ram,
+          //   // so: this.equipo.so,
+          //   // tipo_area: this.equipo.tipo_area,
+          //   // servicio: this.equipo.servicio,
+        };
 
-        fetch("http://localhost/empleados/?insertar=1", {
+        fetch("http://localhost/equipos/?insertar=1", {
           method: "POST",
           body: JSON.stringify(datosEnviar),
         })

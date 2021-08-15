@@ -29,7 +29,7 @@
                 type="text"
                 class="form-control"
                 name="email"
-                v-model="empleado.correo"
+                v-model="empleado.tipo_periferico"
                 id="email"
                 aria-describedby="helpId"
                 required
@@ -61,7 +61,7 @@
     },
     methods: {
       obtenerInformacionID() {
-        fetch("http://localhost/empleados/?consultar=" + this.$route.params.id)
+        fetch("http://localhost/equipos/?consultar=" + this.$route.params.id)
           .then((respuesta) => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
@@ -75,7 +75,7 @@
           nombre: this.empleado.nombre,
           correo: this.empleado.correo,
         };
-        fetch("http://localhost/empleados/?actualizar=" + this.$route.params.id, {
+        fetch("http://localhost/equipos/?actualizar=" + this.$route.params.id, {
           method: "POST",
           body: JSON.stringify(datosEnviar),
         })

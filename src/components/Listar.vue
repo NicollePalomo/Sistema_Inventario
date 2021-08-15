@@ -1,36 +1,52 @@
 <template>
   <div class=" container">
-    <router-link to="/crear" class=" btn btn-success">Crear nuevo empleado</router-link> 
+    <router-link to="/crear" class=" btn btn-success">Crear nuevo equipo</router-link>
     <div class="card mt-3 ">
       <div class="card-header text-center">
-        Empleados
+        Equipos de Cómputo de la Clínica Laura Daniela
       </div>
       <div class="card-body">
         <table class="table">
           <thead>
             <tr>
               <th>ID</th>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Acciones</th>
+              <th>NOMBRE</th>
+              <th>PERIFÉRICO</th>
+              <th>FABRICANTE</th>
+              <th>SERIAL</th>
+              <th>MODELO</th>
+              <th>PROCESADOR</th>
+              <th>RAM</th>
+              <th>SO</th>
+              <th>AREA</th>
+              <th>SERVICIO</th>
+              <th>ACCIÓN</th>
             </tr>
           </thead>
           <tbody>
-            <tr v-for="empleado in empleados" :key="empleado.id">
-              <td>{{ empleado.id }}</td>
-              <td>{{ empleado.nombre }}</td>
-              <td>{{ empleado.correo }}</td>
+            <tr v-for="equipo in equipos" :key="equipo.id">
+              <td>{{ equipo.id }}</td>
+              <td>{{ equipo.nombre }}</td>
+              <td>{{ equipo.periferico }}</td>
+              <td>{{ equipo.fabricante }}</td>
+              <td>{{ equipo.num_serial }}</td>
+              <td>{{ equipo.modelo }}</td>
+              <td>{{ equipo.procesador }}</td>
+              <td>{{ equipo.ram }}</td>
+              <td>{{ equipo.so }}</td>
+              <td>{{ equipo.tipo_area }}</td>
+              <td>{{ equipo.servicio }}</td>
               <td>
-                <div class="btn-group mt-3 " role="group" aria-label="">
+                <div class="btn-groupe" role="group" aria-label="">
                   <router-link
-                    :to="{ name: 'Editar', params: { id: empleado.id } }"
+                    :to="{ name: 'Editar', params: { id: equipo.id } }"
                     class="btn btn-info"
                     >Editar</router-link
                   >
                   <button
                     type="submit"
                     class="btn btn-danger mx-2"
-                    v-on:click="borrarEmpleado(empleado.id)"
+                    v-on:click="borrarEquipo(equipo.id)"
                   >
                     Borrar
                   </button>
@@ -48,29 +64,29 @@
   export default {
     data() {
       return {
-        empleados: [],
+        equipos: [],
       };
     },
     created: function() {
-      this.consultarEmpleados();
+      this.consultarEquipos();
     },
     methods: {
-      consultarEmpleados() {
-        fetch("http://localhost/empleados/")
+      consultarEquipos() {
+        fetch("http://localhost/equipos/")
           .then((respuesta) => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
-            this.empleados = [];
+            this.equipos = [];
             if (typeof datosRespuesta[0].success === "undefined") {
-              this.empleados = datosRespuesta;
+              this.equipos = datosRespuesta;
             }
           })
           .catch(console.log);
       },
-      borrarEmpleado(id) {
+      borrarEquipo(id) {
         console.log(id);
 
-        fetch("http://localhost/empleados/?borrar=" + id)
+        fetch("http://localhost/equipos/?borrar=" + id)
           .then((respuesta) => respuesta.json())
           .then((datosRespuesta) => {
             console.log(datosRespuesta);
