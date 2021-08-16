@@ -60,7 +60,7 @@
         axios.post("https://api.solodata.es/auth", info).then((data) => {
           if (data.data.status == "ok") {
             localStorage.token = data.data.result.token;
-            this.$router.push("dashboard");
+            this.$router.push("listar");
           } else {
             this.error = true;
             this.error_msg = data.data.result.error_msg;
